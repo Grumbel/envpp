@@ -14,8 +14,12 @@ def is_colon_path(text: str) -> bool:
 
 
 def shall_include(args, name: str, value: str) -> bool:
-    return ((args.VARIABLE and name in args.VARIABLE) or
-            any([re.search(rx, name) for rx in args.regex]))
+    if (not args.VARIABLE and
+        not args.regex):
+        return True
+    else:
+        return ((args.VARIABLE and name in args.VARIABLE) or
+                (args.regex and any([re.search(rx, name) for rx in args.regex])))
 
 
 def parse_args(argv: Sequence[str]) -> argparse.Namespace:
@@ -47,4 +51,3 @@ def main_entrypoint() -> None:
 
 
 # EOF #
-
