@@ -1,0 +1,19 @@
+[build-system]
+requires = [
+  "setuptools>=61.2"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "envpp"
+description = "Pretty print environment variables"
+authors = [
+  { name = "Ingo Ruhnke", email = "grumbel@gmail.com" }
+]
+dependencies = [
+  "termcolor"
+]
+dynamic = [ "version" ]
+
+[project.scripts]
+envpp = "envpp.cmd_envpp:main_entrypoint"
