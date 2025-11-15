@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -18,6 +18,9 @@
             version = "0.1.0";
 
             src = ./.;
+
+            pyproject = true;
+            build-system = [ pythonPackages.setuptools ];
 
             propagatedBuildInputs = [
               pythonPackages.termcolor
